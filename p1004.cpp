@@ -5,7 +5,7 @@
 
 
 struct Node {
-	int id;
+//	int id;
 	std::vector<int> children;
 };
 
@@ -26,7 +26,7 @@ int main() {
 		std::vector<int> tmpc(K);
 		for (int i = 0; i < K; i++)
 			scanf("%d", &tmpc[i]);
-		n_node -> id = id;
+//		n_node -> id = id;
 		n_node -> children = tmpc;
 		v[id] = n_node;
 	}
