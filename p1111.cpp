@@ -96,7 +96,7 @@ int main () {
 
 	for (int i = 0; i < M; i++) {
 		int s, e, p, l, t;
-		cin >> s >> e >> p >> l >> t;
+		scanf("%d %d %d %d %d", &s, &e, &p, &l, &t);
 		graph[s][e].len = l;
 		graph[s][e].time = t;
 		if (p == 0) {
