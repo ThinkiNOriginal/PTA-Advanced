@@ -40,13 +40,6 @@ int main () {
 	}		
 
 	printf("Merge Sort\n");
-	//int s = 1;
-	//step = 2;
-//	while (is_sorted(par.begin(), par.begin() + step)) {
-//		s++;
-//		step = pow(2, s);
-//	}
-//
 	step = 2;
 	for (int s = 1;; s++) {
 		bool exit = false;
@@ -62,7 +55,6 @@ int main () {
 		step = pow(2, s);
 	}
 	
-//	step = pow(2, s + 1);
 	for (int i = 0; i < N; i += step) {
 		int tmp = min(i + step, N);
 		sort(par.begin() + i, par.begin() + tmp);
