@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int maxsize = 2000; // magic number;
+const int maxsize = 2002; // because of the N <= 1000, and then the number of people <= 2 * N;
 
 struct Person {
 	int gang;
