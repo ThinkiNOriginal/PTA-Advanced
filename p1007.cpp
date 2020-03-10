@@ -1,51 +1,46 @@
 #include <cstdio>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
+using namespace std;
 
 int main() {
+	int K;
+	scanf("%d", &K);
+	vector<int> vecNum(K);
+	for (int i = 0; i < K; i++)
+		scanf("%d", &vecNum[i]);
 
-	int k;
-	std::cin >> k;
-	std::vector<int> v(k);
-	int res = -1;
-	int index = -1;
-
-	for (int i = 0; i < k; i++) {
-		scanf("%d", &v[i]);
-	}
-
-	std::vector<int> r = v;
-	for (int i = 1; i < k; i++) {
-		auto x = r[i];
-		auto y = r[i - 1];
-		r[i] = x > x + y ? x : x + y;
-		x = r[i];
-		if (res < x) {
-			res = x;
-			index = i;
+	int maxm = -1;
+	int target = -1;
+	auto vecSum = vecNum;
+	for (int i = 1; i < K; i++) {
+		if (i > 0)
+			vecSum[i] = max(vecSum[i] + vecSum[i - 1], vecSum[i]);
+		if (vecSum[i] > maxm) {
+			maxm = vecSum[i];
+			target = i;
 		}
 	}
-
-	int remain = res;
-	int h = index;
-	int l = -1;
-	while (index) {
-		res -= v[index];
-		if (res == 0) {
-			l = index;
-			break;
-		}
-		index--;
+	
+	if (maxm == -1) {
+		printf("0 %d %d", vecNum[0], vecNum[K - 1]);
+		return 0;
 	}
 
-	if (res < 0) {
-		remain = 0;
-		v[l] = v[0];
-		v[h] = v[k - 1];
+	int resL = -1;
+	int resR = target;
+	int resMax = maxm;
+	while (target >= 0) {
+		maxm = maxm - vecNum[target];
+		if (maxm == 0)
+			resL = target;
+		target--;
 	}
-	printf("%d %d %d", remain, v[l], v[h]);
-
+	printf("%d %d %d", resMax, vecNum[resL], vecNum[resR]);
 	return 0;
-
 }
+
+
+
