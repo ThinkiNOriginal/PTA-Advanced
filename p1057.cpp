@@ -55,7 +55,6 @@ int main() {
 				printf("Invalid\n");
 			} else {
 				auto x = cnt % 2 == 0 ? cnt / 2 : (cnt + 1) / 2;
-				//x--;
 				int l = 0;
 				int h = maxsize;
 				while (l < h) {
@@ -66,7 +65,6 @@ int main() {
 					} else if (fre < x) {
 						l = m + 1;
 					}
-					//printf("%d %d %d\n", x, l, h);
 				}
 				printf("%d\n", l);
 			}
